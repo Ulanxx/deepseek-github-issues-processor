@@ -70,7 +70,26 @@ export class IssuesProcessor {
               }))
             };
             
-            await generateMarkdownReport(reportData, path.join(config.outputDir, `${filePrefix}.md`));
+            // 保存中断结果数据到与正常结果相同的目录结构
+            const now = new Date();
+            const date = now.toISOString().split('T')[0]; // 获取日期部分
+            
+            // 创建仓库目录
+            const repoDir = path.join(config.outputDir, config.repository);
+            if (!fs.existsSync(repoDir)) {
+              fs.mkdirSync(repoDir, { recursive: true });
+            }
+            
+            // 创建日期目录
+            const dateDir = path.join(repoDir, date);
+            if (!fs.existsSync(dateDir)) {
+              fs.mkdirSync(dateDir, { recursive: true });
+            }
+            
+            // 使用固定名称，以便同一天内的执行会覆盖之前的文件
+            const mdFilename = `issues_${config.repository}_${date}_interrupted.md`;
+            const mdOutputPath = path.join(dateDir, mdFilename);
+            await generateMarkdownReport(reportData, mdOutputPath);
             console.log('✅ Markdown报告已生成');
           } catch (mdError) {
             console.error('❌ 生成Markdown报告时发生错误:', mdError);
@@ -209,8 +228,9 @@ export class IssuesProcessor {
    */
   private async saveResults(result: BatchProcessResult, suffix = ''): Promise<string> {
     try {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const date = timestamp.split('T')[0]; // 获取日期部分，如 2025-05-16
+      const now = new Date();
+      const timestamp = now.toISOString().replace(/[:.]/g, '-');
+      const date = now.toISOString().split('T')[0]; // 获取日期部分，如 2025-05-16
       
       // 创建仓库名称的目录
       const repoDir = path.join(config.outputDir, config.repository);
@@ -224,7 +244,15 @@ export class IssuesProcessor {
         fs.mkdirSync(dateDir, { recursive: true });
       }
       
-      const filename = `issues_${config.repository}_${timestamp}_${suffix}.json`;
+      // 使用不包含时间的文件名，所以同一天会覆盖
+      let filename;
+      if (suffix.includes('batch') || suffix.includes('intermediate')) {
+        // 批处理文件仍需要保留时间戳以区分不同批次
+        filename = `issues_${config.repository}_${timestamp}_${suffix}.json`;
+      } else {
+        // 最终文件或中断文件使用固定名称，让同一天的文件会被覆盖
+        filename = `issues_${config.repository}_${date}_${suffix}.json`;
+      }
       const outputPath = path.join(dateDir, filename);
       
       // Create a clean version of the results for saving

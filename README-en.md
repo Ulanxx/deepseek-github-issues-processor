@@ -2,6 +2,11 @@
 
 This is a powerful tool for batch retrieving, processing, and analyzing GitHub repository Issues data. It not only collects historical Issues data but also utilizes DeepSeek AI for advanced analysis, saving results in JSON and Markdown formats for subsequent data mining and visualization.
 
+
+### Generate Result Example
+
+[AUTOMA ISSUES](./public/automa/2025-05-16/issues_automa_2025-05-16T04-10-23-283Z_interrupted_2025-05-16T04-10-23-283Z.md)
+
 ## Features
 
 ### Basic Features

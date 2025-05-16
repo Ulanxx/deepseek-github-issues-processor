@@ -2,6 +2,10 @@
 
 这是一个功能强大的工具，用于批量获取、处理和分析 GitHub 仓库的 Issues 数据。它不仅能收集历史 Issues 数据，还能利用 DeepSeek AI 进行高级分析，将结果以 JSON 和 Markdown 格式保存，便于后续数据挖掘与可视化。
 
+### 生成结果用例：
+
+[AUTOMA ISSUES 分析](./public/automa/2025-05-16/issues_automa_2025-05-16T04-10-23-283Z_interrupted_2025-05-16T04-10-23-283Z.md)
+
 ## 功能特点
 
 ### 基础功能
@@ -130,15 +134,15 @@ $ npm start -- --state open --labels bug,enhancement --since 2023-01-01 --until 
 
 #### 可用参数
 
-| 参数 | 说明 | 可选值 | 示例 |
-|------|------|--------|------|
-| `--no-comments` | 不获取Issue评论 | - | `--no-comments` |
-| `--no-reactions` | 不获取Issue反应 | - | `--no-reactions` |
-| `--state` | 按状态过滤 | `open`、`closed`、`all` | `--state open` |
-| `--labels` | 按标签过滤（逗号分隔） | 任意标签名称 | `--labels bug,enhancement` |
-| `--since` | 起始日期（ISO格式） | YYYY-MM-DD | `--since 2023-01-01` |
-| `--until` | 结束日期（ISO格式） | YYYY-MM-DD | `--until 2023-12-31` |
-| `--file` | 用于AI分析的指定JSON文件 | 文件路径 | `--file ./output/repo/date/file.json` |
+| 参数             | 说明                         | 可选值                  | 示例                                  |
+| ---------------- | ---------------------------- | ----------------------- | ------------------------------------- |
+| `--no-comments`  | 不获取 Issue 评论            | -                       | `--no-comments`                       |
+| `--no-reactions` | 不获取 Issue 反应            | -                       | `--no-reactions`                      |
+| `--state`        | 按状态过滤                   | `open`、`closed`、`all` | `--state open`                        |
+| `--labels`       | 按标签过滤（逗号分隔）       | 任意标签名称            | `--labels bug,enhancement`            |
+| `--since`        | 起始日期（ISO 格式）         | YYYY-MM-DD              | `--since 2023-01-01`                  |
+| `--until`        | 结束日期（ISO 格式）         | YYYY-MM-DD              | `--until 2023-12-31`                  |
+| `--file`         | 用于 AI 分析的指定 JSON 文件 | 文件路径                | `--file ./output/repo/date/file.json` |
 
 ### 输出目录结构
 

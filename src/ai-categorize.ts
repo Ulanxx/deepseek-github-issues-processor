@@ -152,7 +152,7 @@ function categorizeIssueByRules(issue: Issue): string[] {
  * 生成Markdown报告
  */
 export async function generateMarkdownReport(data: ProcessedData, outputPath: string): Promise<void> {
-  let markdown = `# GitHub Issues 分析报告\n\n`;
+  let markdown = `# DeepSeek AI - GitHub Issues 分析报告\n\n`;
   
   // 添加元数据
   markdown += `## 项目信息\n\n`;
