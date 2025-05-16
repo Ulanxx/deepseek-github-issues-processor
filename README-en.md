@@ -1,5 +1,7 @@
 # GitHub Issues Batch Processing and Analysis Tool
 
+[中文文档](./README.md)
+
 This is a powerful tool for batch retrieving, processing, and analyzing GitHub repository Issues data. It not only collects historical Issues data but also utilizes DeepSeek AI for advanced analysis, saving results in JSON and Markdown formats for subsequent data mining and visualization.
 
 

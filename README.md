@@ -1,5 +1,7 @@
 # GitHub Issues 批量处理与分析工具
 
+[English](./README-en.md)
+
 这是一个功能强大的工具，用于批量获取、处理和分析 GitHub 仓库的 Issues 数据。它不仅能收集历史 Issues 数据，还能利用 DeepSeek AI 进行高级分析，将结果以 JSON 和 Markdown 格式保存，便于后续数据挖掘与可视化。
 
 ### 生成结果用例：
