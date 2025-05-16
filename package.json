@@ -1,0 +1,44 @@
+{
+  "name": "deepseek-github-issues-processor",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node src/index.ts",
+    "watch": "ts-node-dev --respawn src/index.ts",
+    "fetch": "ts-node src/index.ts",
+    "fetch:open": "ts-node src/index.ts --state open",
+    "fetch:closed": "ts-node src/index.ts --state closed",
+    "fetch:all": "ts-node src/index.ts --state all",
+    "fetch:recent": "ts-node src/index.ts --since $(date -v-30d +%Y-%m-%d)",
+    "fetch:batch": "ts-node src/index.ts --batch-size 20",
+    "fetch:no-comments": "ts-node src/index.ts --no-comments",
+    "analyze": "ts-node src/ai-categorize.ts",
+    "analyze:file": "ts-node src/ai-categorize.ts --file",
+    "analyze:latest": "ts-node src/ai-categorize.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "issues",
+    "deepseek",
+    "processor"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "DeepSeek AI 批量处理历史GitHub Issues工具，整理并总结，帮助开发者维护。",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "octokit": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^20.10.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2"
+  },
+  "packageManager": "yarn@1.22.22"
+}
